@@ -1,10 +1,11 @@
 package ren.shuaipeng.cms.posts
 
-import org.junit.Assert.assertNotNull
-import org.junit.Test
+
+import org.testng.Assert.assertNotNull
+import org.testng.annotations.Test
 import java.util.*
 
-class PostsTest {
+class PostsTest  {
 
     @Test
     fun init() {

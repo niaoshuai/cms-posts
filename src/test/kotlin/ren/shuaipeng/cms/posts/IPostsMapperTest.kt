@@ -1,16 +1,15 @@
 package ren.shuaipeng.cms.posts
 
-import org.junit.Assert.assertTrue
-import org.junit.Test
-import org.junit.runner.RunWith
+
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.context.junit4.SpringRunner
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests
+import org.testng.Assert.assertTrue
+import org.testng.annotations.Test
 import java.util.*
 
-@RunWith(SpringRunner::class)
 @SpringBootTest
-class IPostsMapperTest {
+class IPostsMapperTest : AbstractTestNGSpringContextTests() {
 
     @Autowired
     private val postsMapper: IPostsMapper? = null
@@ -23,7 +22,17 @@ class IPostsMapperTest {
     }
 
     @Test
-    fun testFindAll() {
-        assertTrue(postsMapper!!.findAll().isNotEmpty())
+    fun testFindList() {
+        assertTrue(postsMapper!!.findList().isNotEmpty())
+    }
+
+    @Test
+    fun testUpdate(){
+
+    }
+
+    @Test
+    fun testDelete(){
+
     }
 }

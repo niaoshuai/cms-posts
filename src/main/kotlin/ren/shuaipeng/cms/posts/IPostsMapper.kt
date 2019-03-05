@@ -17,11 +17,21 @@ interface IPostsMapper {
      * 查询所有
      */
     @Select("select * from posts")
-    fun findAll(): List<Posts>
+    fun findList(): List<Posts>
 
     /**
      * 新增
      */
     @Insert("insert into posts values(#{id},#{title},#{gmtCreate},#{gmtModified})")
     fun save(posts: Posts): Int
+
+    /**
+     * 修改
+     */
+    fun update(posts: Posts): Int
+
+    /**
+     * 删除
+     */
+    fun delete(id:Int): Int
 }

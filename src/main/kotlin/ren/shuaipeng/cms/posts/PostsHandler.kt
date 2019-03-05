@@ -17,6 +17,6 @@ class PostsHandler {
     private val postsMapper: IPostsMapper? = null
 
     fun findAllUser(request:ServerRequest): Mono<ServerResponse> {
-        return ServerResponse.ok().json().body(BodyInserters.fromObject(postsMapper!!.findAll()))
+        return ServerResponse.ok().json().body(BodyInserters.fromObject(postsMapper!!.findList()))
     }
 }

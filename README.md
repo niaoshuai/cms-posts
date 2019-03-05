@@ -18,3 +18,4 @@ create table posts (
 java -Dloader.path=lib -jar cms-posts-1.0.0-SNAPST.jar 
 ```
 ## 诊断
+https://github.com/alibaba/arthas/blob/master/README_CN.md

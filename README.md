@@ -1,7 +1,14 @@
 # 
 ## postgres 配置
-### 配置监听
-### 配置防火墙
+### 安装
+```sh
+sudo apt install postgresql-9.6
+# 修改密码
+sudo -u postgres psql
+ALTER USER postgres WITH PASSWORD '123456';
+```
+### 配置监听 (postgresql.conf)
+### 配置防火墙 (pg_hba.conf)
 ### 创建数据库
 ```postgresql
 create database posts encoding = 'UTF8';

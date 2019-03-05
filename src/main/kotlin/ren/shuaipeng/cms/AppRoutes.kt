@@ -11,7 +11,7 @@ import org.springframework.web.reactive.function.server.RequestPredicates.GET
 import org.springframework.web.reactive.function.server.RouterFunctions.route
 
 @Configuration
-class CmsRoutingConfig {
+class AppRoutes {
 
     @Bean
     fun monoRouterFunction(postsHandler: PostsHandler): RouterFunction<ServerResponse?> {

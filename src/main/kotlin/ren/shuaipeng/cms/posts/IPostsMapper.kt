@@ -1,8 +1,6 @@
 package ren.shuaipeng.cms.posts
 
-import org.apache.ibatis.annotations.Insert
-import org.apache.ibatis.annotations.Mapper
-import org.apache.ibatis.annotations.Select
+import org.apache.ibatis.annotations.*
 
 /**
  * posts
@@ -28,10 +26,12 @@ interface IPostsMapper {
     /**
      * 修改
      */
+    @Update("update posts set title = #{title} , gmt_modified = #{gmtModified} where id = #{id}")
     fun update(posts: Posts): Int
 
     /**
      * 删除
      */
-    fun delete(id:Int): Int
+    @Delete("delete from posts where id = #{id}")
+    fun delete(id:String): Int
 }

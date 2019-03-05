@@ -8,7 +8,7 @@ import org.testng.Assert.assertTrue
 import org.testng.annotations.Test
 import java.util.*
 
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class IPostsMapperTest : AbstractTestNGSpringContextTests() {
 
     @Autowired
@@ -17,7 +17,9 @@ class IPostsMapperTest : AbstractTestNGSpringContextTests() {
     @Test
     fun testSave() {
         var posts = Posts()
-        posts.id = UUID.randomUUID().toString().replace("-", "")
+        posts.id = "1"
+        posts.title = "123"
+        posts.gmtCreate = Date()
         assertTrue(postsMapper!!.save(posts) > 0)
     }
 
@@ -28,11 +30,15 @@ class IPostsMapperTest : AbstractTestNGSpringContextTests() {
 
     @Test
     fun testUpdate(){
-
+        var posts = Posts()
+        posts.id = "1"
+        posts.title = "456"
+        posts.gmtModified = Date()
+        assertTrue(postsMapper!!.update(posts) > 0)
     }
 
     @Test
     fun testDelete(){
-
+        assertTrue(postsMapper!!.delete("1") > 0)
     }
 }

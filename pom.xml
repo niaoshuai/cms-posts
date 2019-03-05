@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>ren.shuaipeng</groupId>
-    <artifactId>cms</artifactId>
+    <artifactId>cms-posts</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>cms</name>
+    <name>cms-posts</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -66,6 +66,37 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!-- 设置为ZIP，此模式下spring-boot-maven-plugin会将Manifest.MF文件中的Main-Class设置为org.springframework.boot.loader.PropertiesLauncher -->
+                    <layout>ZIP</layout>
+                    <!-- 需要包含的jar包 -->
+                    <includes>
+                         <!--不包含任何jar包-->
+                        <include>
+                            <groupId>nothing</groupId>
+                            <artifactId>nothing</artifactId>
+                        </include>
+                    </includes>
+                </configuration>
+            </plugin>
+            <!-- third-party jar into lib directory -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                            <!-- 需要排除的jar的 groupId -->
+                            <!--<excludeGroupIds></excludeGroupIds>-->
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>

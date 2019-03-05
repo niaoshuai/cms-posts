@@ -13,3 +13,8 @@ create table posts (
   gmt_modified timestamp
 );
 ```
+## 瘦身
+```sh
+java -Dloader.path=lib -jar cms-posts-1.0.0-SNAPST.jar 
+```
+## 诊断

@@ -26,7 +26,6 @@ class IPostsMapperTest {
 
     @Test
     fun testFindAll() {
-        assertNotNull(postsMapper!!.findAll())
-        assertTrue(postsMapper!!.findAll().size > 0)
+        assertTrue(postsMapper!!.findAll().isNotEmpty())
     }
 }

@@ -18,19 +18,16 @@ class PostHandler (
             ok().json().body(postRepository.findAll())
 
     /**
-     * 查询单个
-     */
-//    fun findTitle(request: ServerRequest) =
-//            ok().json().body(postsRepository.findByTitle(request.pathVariable("title")))
-
-    /**
      * 新增
      */
     fun save(request: ServerRequest) = request.bodyToMono(Post::class.java).flatMap {
         postRepository.save(it).then(ok().build())
     }
 
-    fun deleteAll(request: ServerRequest) = postRepository.delete(request.pathVariable("id")).then(ok().build())
+    /**
+     * 删除
+     */
+    fun delete(request: ServerRequest) = postRepository.delete(request.pathVariable("id")).then(ok().build())
 
 
 }

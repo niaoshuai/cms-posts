@@ -15,7 +15,7 @@ class AppRoutes(
         "/post".nest {
             GET("/", postsHandler::findAll)
             POST("/",postsHandler::save)
-            DELETE("/{id}",postsHandler::deleteAll)
+            DELETE("/{id}",postsHandler::delete)
         }
     }
 }

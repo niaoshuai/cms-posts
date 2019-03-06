@@ -22,13 +22,13 @@ class PostsHandlerTest : AbstractTestNGSpringContextTests() {
     @Test
     fun save() {
         var posts = Posts()
-        posts.id = "1234"
+        posts.id = "12345"
         posts.title = "89"
         posts.gmtCreate = Date()
         this.webClient!!.put()
                 .uri("/posts")
                 .body(BodyInserters.fromObject(posts))
                 .exchange()
-                .expectBody().json("{}")
+                .expectStatus().isOk
     }
 }

@@ -2,8 +2,11 @@ package ren.shuaipeng.cms.posts
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
+import org.springframework.web.reactive.function.BodyInserters
+import org.springframework.web.reactive.function.BodyInserters.fromObject
 import org.springframework.web.reactive.function.server.ServerRequest
 import org.springframework.web.reactive.function.server.ServerResponse
+import org.springframework.web.reactive.function.server.json
 import reactor.core.publisher.Mono
 
 
@@ -13,6 +16,10 @@ class PostsHandler {
     @Autowired
     private val postsService: PostsService? = null
 
+
+    @Autowired
+    private val postsMapper: IPostsMapper? = null
+
     /**
      * 查询全部
      */
@@ -20,26 +27,28 @@ class PostsHandler {
 //        return ServerResponse.ok()
 //                .json()
 //                .body(BodyInserters.fromObject(postsMapper!!.findList()))
-        return ServerResponse.ok().build()
+        return ServerResponse.ok()
+                .json()
+                .body(BodyInserters.fromObject(postsMapper!!.findList()))
     }
 
     /**
      * 添加
      */
     fun save(request: ServerRequest): Mono<ServerResponse> {
-//        return request.bodyToMono(Posts::class.java)
-//                .map {
-//                  postsMapper!!.save(it)
-//                }
-//                .flatMap {
-//                    posts -> ServerResponse.ok()
-//                        .json()
-//                        .body(fromObject(posts))
-//                }
+        return request.bodyToMono(Posts::class.java)
+                .map {
+                  postsMapper!!.save(it)
+                }
+                .flatMap {
+                    posts -> ServerResponse.ok()
+                        .json()
+                        .body(fromObject(posts))
+                }
 
-        return postsService!!.save(request.bodyToMono(Posts::class.java)).flatMap {
-            ServerResponse.ok().build()
-        }
+//        return postsService!!.save(request.bodyToMono(Posts::class.java)).flatMap {
+//            ServerResponse.ok().build()
+//        }
 
     }
 

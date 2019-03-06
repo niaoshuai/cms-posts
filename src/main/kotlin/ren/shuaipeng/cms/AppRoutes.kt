@@ -14,8 +14,8 @@ class AppRoutes(
     fun appRouter() = router {
         "/post".nest {
             GET("/", postsHandler::findAll)
-            GET("/{title}", postsHandler::findTitle)
             POST("/",postsHandler::save)
+            DELETE("/{id}",postsHandler::deleteAll)
         }
     }
 }

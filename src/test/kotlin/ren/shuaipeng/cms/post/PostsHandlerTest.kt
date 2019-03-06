@@ -30,4 +30,10 @@ class PostsHandlerTest : AbstractTestNGSpringContextTests() {
         this.webClient!!.post().uri("/post").body(BodyInserters.fromObject(post))
                 .exchange().expectStatus().isOk
     }
+
+    @Test
+    fun deleteAll(){
+        this.webClient!!.delete().uri("/post/12")
+                .exchange().expectStatus().isOk
+    }
 }

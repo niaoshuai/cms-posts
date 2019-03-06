@@ -9,26 +9,28 @@ import org.springframework.web.reactive.function.server.json
 
 @Component
 class PostHandler (
-        private val postsRepository: PostRepository){
+        private val postRepository: PostRepository){
 
     /**
      * 查询全部
      */
     fun findAll(request: ServerRequest) =
-            ok().json().body(postsRepository.findAll())
+            ok().json().body(postRepository.findAll())
 
     /**
      * 查询单个
      */
-    fun findTitle(request: ServerRequest) =
-            ok().json().body(postsRepository.findByTitle(request.pathVariable("title")))
+//    fun findTitle(request: ServerRequest) =
+//            ok().json().body(postsRepository.findByTitle(request.pathVariable("title")))
 
     /**
      * 新增
      */
     fun save(request: ServerRequest) = request.bodyToMono(Post::class.java).flatMap {
-        postsRepository.save(it).then(ok().build())
+        postRepository.save(it).then(ok().build())
     }
+
+    fun deleteAll(request: ServerRequest) = postRepository.delete(request.pathVariable("id")).then(ok().build())
 
 
 }

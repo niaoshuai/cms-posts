@@ -1,4 +1,4 @@
-package ren.shuaipeng.cms.posts
+package ren.shuaipeng.cms.post
 
 
 import org.testng.Assert.assertNotNull

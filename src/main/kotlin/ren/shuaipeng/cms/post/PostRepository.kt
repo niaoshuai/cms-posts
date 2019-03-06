@@ -1,4 +1,4 @@
-package ren.shuaipeng.cms.posts
+package ren.shuaipeng.cms.post
 
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate
 import org.springframework.data.mongodb.core.count

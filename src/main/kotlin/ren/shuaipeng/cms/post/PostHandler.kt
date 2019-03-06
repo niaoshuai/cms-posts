@@ -1,4 +1,4 @@
-package ren.shuaipeng.cms.posts
+package ren.shuaipeng.cms.post
 
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.server.ServerRequest

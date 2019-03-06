@@ -27,7 +27,7 @@ class PostHandler (
     /**
      * 删除
      */
-    fun delete(request: ServerRequest) = postRepository.delete(request.pathVariable("id")).then(ok().build())
+    fun delete(request: ServerRequest) = postRepository.deleteById(request.pathVariable("id")).then(ok().build())
 
 
 }

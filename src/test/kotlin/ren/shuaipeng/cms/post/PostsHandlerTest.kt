@@ -17,8 +17,8 @@ class PostsHandlerTest : AbstractTestNGSpringContextTests() {
 
 
     @Test
-    fun `find post data`() {
-        this.webClient!!.get().uri("/post").exchange().expectStatus().isOk.expectBody().json("[{}]")
+    fun `find post list data`() {
+        this.webClient!!.get().uri("/post").exchange().expectStatus().isOk
     }
 
     /**
@@ -26,7 +26,7 @@ class PostsHandlerTest : AbstractTestNGSpringContextTests() {
      */
     @Test
     fun `save post`() {
-        var post = Post("13","124", LocalDate.now(), LocalDate.now())
+        var post = Post("14","124")
         this.webClient!!.post().uri("/post").body(BodyInserters.fromObject(post))
                 .exchange().expectStatus().isOk
     }

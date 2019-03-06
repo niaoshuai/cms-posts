@@ -17,7 +17,7 @@ class PostsHandlerTest : AbstractTestNGSpringContextTests() {
 
 
     @Test
-    fun findList() {
+    fun `find post data`() {
         this.webClient!!.get().uri("/post").exchange().expectStatus().isOk.expectBody().json("[{}]")
     }
 
@@ -25,14 +25,14 @@ class PostsHandlerTest : AbstractTestNGSpringContextTests() {
      * 已存在自动覆盖
      */
     @Test
-    fun save() {
+    fun `save post`() {
         var post = Post("13","124", LocalDate.now(), LocalDate.now())
         this.webClient!!.post().uri("/post").body(BodyInserters.fromObject(post))
                 .exchange().expectStatus().isOk
     }
 
     @Test
-    fun deleteAll(){
+    fun `delete post`(){
         this.webClient!!.delete().uri("/post/12")
                 .exchange().expectStatus().isOk
     }

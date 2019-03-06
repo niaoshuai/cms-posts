@@ -5,21 +5,21 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.web.reactive.function.server.RouterFunction
 import org.springframework.web.reactive.function.server.RouterFunctions.route
 import org.springframework.web.reactive.function.server.ServerResponse
-import ren.shuaipeng.cms.posts.PostsHandler
+import org.springframework.web.reactive.function.server.router
+import ren.shuaipeng.cms.posts.PostHandler
 
 @Configuration
-class AppRoutes {
+class AppRoutes(
+        private val postsHandler: PostHandler
+) {
 
     @Bean
-    fun monoRouterFunction(postsHandler: PostsHandler): RouterFunction<ServerResponse?> {
-        return route()
-                .GET("/posts/list", postsHandler::findList)
-                .PUT("/posts", postsHandler::save)
-                .DELETE("/posts/{id}", postsHandler::delete)
-                .POST("/post/{id}", postsHandler::update)
-                .build()
+    fun appRouter() = router {
+        "/post".nest {
+            GET("/", postsHandler::findAll)
+            GET("/{title}", postsHandler::findTitle)
+        }
     }
-
 }
 
 

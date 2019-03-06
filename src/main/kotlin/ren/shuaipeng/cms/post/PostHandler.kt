@@ -23,4 +23,12 @@ class PostHandler (
     fun findTitle(request: ServerRequest) =
             ok().json().body(postsRepository.findByTitle(request.pathVariable("title")))
 
+    /**
+     * 新增
+     */
+    fun save(request: ServerRequest) = request.bodyToMono(Post::class.java).flatMap {
+        postsRepository.save(it).then(ok().build())
+    }
+
+
 }

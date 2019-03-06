@@ -15,6 +15,7 @@ class AppRoutes(
         "/post".nest {
             GET("/", postsHandler::findAll)
             GET("/{title}", postsHandler::findTitle)
+            POST("/",postsHandler::save)
         }
     }
 }

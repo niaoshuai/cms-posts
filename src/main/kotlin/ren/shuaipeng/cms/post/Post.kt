@@ -16,6 +16,8 @@ data class Post (
         var title: String?
 ) {
 
-    @CreatedDate   var gmtCreate: LocalDateTime? = null
-    @LastModifiedDate var gmtModified: LocalDateTime? = null
+    @CreatedDate
+    var gmtCreate: LocalDateTime? = null
+    @LastModifiedDate
+    var gmtModified: LocalDateTime? = null
 }

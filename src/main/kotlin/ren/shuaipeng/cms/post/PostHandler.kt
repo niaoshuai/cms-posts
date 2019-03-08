@@ -40,7 +40,7 @@ class PostHandler(
     /**
      * 详情
      */
-    fun detail(request: ServerRequest) =   postRepository.findById(request.pathVariable("id")).flatMap {
+    fun detail(request: ServerRequest) = postRepository.findById(request.pathVariable("id")).flatMap {
         ok().json().body(BodyInserters.fromObject(it))
     }.switchIfEmpty(
             notFound().build()

@@ -4,4 +4,4 @@ import org.springframework.data.repository.reactive.ReactiveSortingRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface PostRepository : ReactiveSortingRepository<Post,String>
+interface PostRepository : ReactiveSortingRepository<Post, String>

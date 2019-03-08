@@ -10,7 +10,7 @@ import java.time.LocalDateTime
 class Log(var method: String?,
           var params: String?,
           var returns: String?
-){
+) {
     @CreatedDate
     var gmtCreate: LocalDateTime? = null
     @LastModifiedDate

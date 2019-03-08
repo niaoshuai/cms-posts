@@ -4,10 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests
 import org.springframework.test.web.reactive.server.WebTestClient
-import org.springframework.test.web.reactive.server.body
 import org.springframework.web.reactive.function.BodyInserters
 import org.testng.annotations.Test
-import java.time.LocalDate
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class PostsHandlerTest : AbstractTestNGSpringContextTests() {
@@ -26,13 +24,13 @@ class PostsHandlerTest : AbstractTestNGSpringContextTests() {
      */
     @Test
     fun `save post`() {
-        var post = Post("14","124")
+        var post = Post("14", "124")
         this.webClient!!.post().uri("/post").body(BodyInserters.fromObject(post))
                 .exchange().expectStatus().isOk
     }
 
     @Test
-    fun `delete post`(){
+    fun `delete post`() {
         this.webClient!!.delete().uri("/post/12")
                 .exchange().expectStatus().isOk
     }

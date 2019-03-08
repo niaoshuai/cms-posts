@@ -11,7 +11,7 @@ import java.time.LocalDateTime
  * 文章详情
  */
 @Document
-data class Post (
+data class Post(
         @Id var id: String,
         var title: String?
 ) {

@@ -9,13 +9,13 @@ import ren.shuaipeng.cms.post.PostHandler
 class AppRoutes(
         private val postsHandler: PostHandler
 ) {
-
     @Bean
     fun appRouter() = router {
         "/post".nest {
             GET("/", postsHandler::findAll)
             POST("/",postsHandler::save)
             DELETE("/{id}",postsHandler::delete)
+            GET("/{id}",postsHandler::detail)
         }
     }
 }
